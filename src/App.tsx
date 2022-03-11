@@ -1,25 +1,29 @@
 import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ProtectedLayout } from './components/ProtectedLayout';
+import { AuthProvider } from './context/AuthProvider';
+import { SignIn } from './pages/SignIn/SignIn';
+import { Profile } from './pages/Profile/Profile';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div>
+            <AuthProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/signin' element={<SignIn />}/>
+                        <Route path='/profile' element={
+                            <ProtectedLayout>
+                                <Profile />
+                            </ProtectedLayout>}
+                        />
+                        <Route path='/profile2' element={<Profile />}/>
+                    </Routes>
+                </BrowserRouter>
+            </AuthProvider>
+        </div>
+    );
 }
 
 export default App;
