@@ -18,7 +18,6 @@ function App() {
                                 <Profile />
                             </ProtectedLayout>}
                         />
-                        <Route path='/profile2' element={<Profile />}/>
                     </Routes>
                 </BrowserRouter>
             </AuthProvider>
