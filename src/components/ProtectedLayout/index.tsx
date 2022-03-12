@@ -12,7 +12,7 @@ export const ProtectedLayout = ({ children }: { children: JSX.Element}) => {
         navigate('/signin');
     }
 
-    if (!auth.email) 
+    if (!auth.accessToken) 
     {
         return (
             <S.Container>

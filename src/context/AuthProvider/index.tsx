@@ -7,7 +7,8 @@ export const AuthContext = createContext<IContext>({} as IContext)
 export const AuthProvider = ({ children }: IAuthProvider) => {
     const [user, setUser] = useState<IUser | null>();
 
-    useEffect(() => {
+    useEffect(() => 
+    {
         const user = getUserLocalStorage();
 
         if (user) {
@@ -15,16 +16,18 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
         }
     }, []);
 
-    async function authenticate (email:string, password: string) {
+    async function authenticate (email:string, password: string) 
+    {
         const response = await LoginRequest(email, password);
 
-        const payload = { token: response.token, email};
+        const payload = { refreshToken: response.tokens.refresh, accessToken: response.tokens.access,};
 
         setUser(payload);
         setUserLocalStorage(payload);
     }
 
-    function logout () {
+    function logout () 
+    {
         setUser(null);
         setUserLocalStorage(null);
     }

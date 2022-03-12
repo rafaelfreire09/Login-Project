@@ -2,13 +2,14 @@ import { Api } from "../../services/api";
 import { IUser } from "./types";
 
 export function setUserLocalStorage (user: IUser | null) {
-    localStorage.setItem('u', JSON.stringify(user));
+    localStorage.setItem('t', JSON.stringify(user));
 }
 
 export function getUserLocalStorage () {
-    const json = localStorage.getItem("u");
+    const json = localStorage.getItem("t");
 
-    if (!json) {
+    if (!json) 
+    {
         return null;
     }
 
@@ -18,11 +19,38 @@ export function getUserLocalStorage () {
 }
 
 export async function LoginRequest(email: string, password: string) {
-    try {
-        const request = await Api.post("login", { email, password });
+    try 
+    {
+        const request = await Api.post("/tokens/", { 
+            email, password 
+        });
 
         return request.data;
-    } catch (error) {
+    } catch (error) 
+    {
+        return null;
+    }
+}
+
+export async function ProfileInfoRequest() {
+    try 
+    {
+        const user = getUserLocalStorage();
+
+        const config = 
+        {
+            headers: 
+            { 
+                'Authorization': `Bearer ${user.accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        };
+
+        const request = await Api.get("/profile/", config);
+
+        return request.data;
+    } catch (error) 
+    {
         return null;
     }
 }

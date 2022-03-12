@@ -1,16 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import * as S from './index.styles';
 
-import profilePicture from '../../assets/test1.jpg';
 import { useAuth } from '../../context/AuthProvider/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { ProfileInfoRequest } from '../../context/AuthProvider/util';
 
 export const Profile = () => {
     const auth = useAuth();
     let navigate = useNavigate();
 
-    const handleLogout = () => {
+    const [ profileName, setProfileName ] = useState([]);
+    const [ profileLastName, setProfileLastName ] = useState([]);
+    const [ profileEmail, setProfileEmail ] = useState([]);
+    const [ profileAvatar, setProfileAvatar ] = useState([]);
+
+    useEffect(() => 
+    {
+        const getProfile = async () => 
+        {
+            const response = await ProfileInfoRequest();
+
+            setProfileName(response.name);
+            setProfileLastName(response.last_name);
+            setProfileEmail(response.email);
+            setProfileAvatar(response.avatar.image_low_url);
+        }
+
+        getProfile();
+    }, [])
+
+    const handleLogout = () => 
+    {
         auth.logout();
 
         navigate('/signin');
@@ -34,7 +55,7 @@ export const Profile = () => {
                     <S.Profile_Picture>
                         <span>Profile picture</span>
                         <span>
-                            <img src={profilePicture} alt="User Picture"/>
+                            <img src={`${profileAvatar}`} alt="Profile Picture"/>
                         </span>
                     </S.Profile_Picture>
 
@@ -44,7 +65,7 @@ export const Profile = () => {
                         </S.Profile_Text>
 
                         <S.Profile_Field>
-                            Cleiton Bom de Guerra
+                            {profileName + " " + profileLastName}
                         </S.Profile_Field>
                     </S.Profile_Info>
 
@@ -54,7 +75,7 @@ export const Profile = () => {
                         </S.Profile_Text>
 
                         <S.Profile_Field>
-                            cleiton@grecia.com
+                            {profileEmail}
                         </S.Profile_Field>
                     </S.Profile_Info>
 
