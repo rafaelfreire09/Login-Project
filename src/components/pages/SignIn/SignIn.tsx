@@ -22,8 +22,6 @@ export const SignIn = () => {
         setPassword(event.target.value);
     }
 
-    
-
     function showMessage ( message: string) {
         function removeMessage () {
             setErrorMessage('');
