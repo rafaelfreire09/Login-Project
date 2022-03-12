@@ -1,5 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import * as S from './index.styles';
+
 import { useAuth } from "../../context/AuthProvider/useAuth";
 
 export const SignIn = () => {
@@ -33,22 +36,47 @@ export const SignIn = () => {
     }
 
     return (
-        <div>
-            <input
-                type="text"
-                value={email}
-                onChange={handleEmailInput}
-                placeholder="Type your e-mail"
-            />
+        <S.Container>
+            <S.Container_Login>
+                <S.Wrap_Login>
+                    <S.Login_Form>
+                        <S.Login_Form_Title>
+                            b2b<span>it</span>
+                        </S.Login_Form_Title>
 
-            <input
-                type="password"
-                value={password}
-                onChange={handlePasswordInput}
-                placeholder="Type your password"
-            />
+                        <S.Wrap_Input>
+                            <input
+                                className={email !== "" ? "has-val input" : "input"}
+                                type="email"
+                                value={email}
+                                onChange={handleEmailInput}
+                            />
 
-            <button onClick={handleLogin}>Sign In</button>
-        </div>
+                            <span className="focus-input" data-placeholder="E-mail"></span>
+                        </S.Wrap_Input>
+
+                        <S.Wrap_Input>
+                            <input
+                                className={password !== "" ? "has-val input" : "input"}
+                                type="password"
+                                value={password}
+                                onChange={handlePasswordInput}
+                            />
+
+                            <span className="focus-input" data-placeholder="Password"></span>
+                        </S.Wrap_Input>
+
+                        <S.Login_Form_Button>
+                            <button 
+                                className="login-button"
+                                onClick={handleLogin}
+                            >
+                                Sign In
+                            </button>
+                        </S.Login_Form_Button>
+                    </S.Login_Form>
+                </S.Wrap_Login>
+            </S.Container_Login>
+        </S.Container>
     );
 }
