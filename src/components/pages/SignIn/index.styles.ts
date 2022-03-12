@@ -134,10 +134,19 @@ export const Wrap_Input = styled.div`
     }
 `;
 
+export const Error_Message = styled.div`
+    font-family: Raleway, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    color: #ff2b2b;
+`;
+
 export const Login_Form_Button = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 20px;
     padding-bottom: 13px;
 
     .login-button {

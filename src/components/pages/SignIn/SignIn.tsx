@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import * as S from './index.styles';
 
-import { useAuth } from "../../context/AuthProvider/useAuth";
+import { useAuth } from "../../../context/AuthProvider/useAuth";
 
 export const SignIn = () => {
     const auth = useAuth();
@@ -12,12 +12,26 @@ export const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
     }
 
     const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
+    }
+
+    
+
+    function showMessage ( message: string) {
+        function removeMessage () {
+            setErrorMessage('');
+        }
+
+        setErrorMessage(message);
+
+        setTimeout(removeMessage, 5000);
     }
 
     const handleLogin = async () => {
@@ -30,8 +44,11 @@ export const SignIn = () => {
                 navigate('/profile');
             } catch (error) 
             {
-                console.log('Invalid email or password');
+                showMessage('Invalid email or password.');
             }
+        } else 
+        {
+            showMessage('Email and password is required.');
         }
     }
 
@@ -65,6 +82,12 @@ export const SignIn = () => {
 
                             <span className="focus-input" data-placeholder="Password"></span>
                         </S.Wrap_Input>
+
+                        {errorMessage && (
+                            <S.Error_Message>
+                                {`${errorMessage}`}
+                            </S.Error_Message>
+                        )}
 
                         <S.Login_Form_Button>
                             <button 

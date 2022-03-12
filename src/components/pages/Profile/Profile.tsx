@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import * as S from './index.styles';
 
-import { useAuth } from '../../context/AuthProvider/useAuth';
+import { useAuth } from '../../../context/AuthProvider/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { ProfileInfoRequest } from '../../context/AuthProvider/util';
+import { ProfileInfoRequest } from '../../../context/AuthProvider/util';
 
 export const Profile = () => {
     const auth = useAuth();
