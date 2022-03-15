@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import * as S from './index.styles';
@@ -48,6 +48,11 @@ export const SignIn = () => {
         {
             showMessage('Email and password is required.');
         }
+    }
+
+    if (auth.accessToken) 
+    {
+        navigate('/profile');
     }
 
     return (
