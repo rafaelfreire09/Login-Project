@@ -72,6 +72,55 @@ export const Wrap_Profile = styled.div`
     background-color: #FDFDFD;
 `;
 
+export const SessionExpiredText = styled.div`
+    font-family: Raleway, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    
+    .expired {
+        color: #ff2b2b;
+    }
+
+    span {
+        color: #02274F;
+    }
+`;
+
+export const SignIn_Button = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 13px;
+
+    .login-button {
+        font-size: 17px;
+        font-weight: 600;
+        
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        line-height: 1.2;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+
+        background: #6a7dfe;
+        background: -webkit-linear-gradient(to left, #02274F, #FDCF0075);
+        background: -o-linear-gradient(to left, #02274F, #FDCF0075);
+        background: -moz-linear-gradient(to left, #02274F, #FDCF0075);
+        background: linear-gradient(to right, #02274F, #FDCF0075);
+    }
+
+    .login-button:hover {
+        cursor: pointer;
+    }
+`;
+
 export const Profile_Picture = styled.div`
     font-family: Raleway, sans-serif;
 
