@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate  } from "react-router-dom";
-import { useAuth } from "../../../context/AuthProvider/useAuth";
+import { useAuth } from "../../../hooks/useAuth";
 
 import * as S from './index.styles';
 
-export const ProtectedLayout = ({ children }: { children: JSX.Element}) => {
+export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
     const auth = useAuth();
     let navigate = useNavigate();
 

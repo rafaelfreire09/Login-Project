@@ -1,5 +1,5 @@
-import { Api } from "../../services/api";
-import { IUser } from "./types";
+import { Api } from "./services/api";
+import { IUser } from "./types/types";
 
 export function setUserLocalStorage (user: IUser | null) {
     localStorage.setItem('t', JSON.stringify(user));

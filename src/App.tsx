@@ -1,10 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
-import { ProtectedLayout } from './components/pages/ProtectedLayout/ProtectedLayout';
+
 import { AuthProvider } from './context/AuthProvider';
+
 import { SignIn } from './components/pages/SignIn/SignIn';
 import { Profile } from './components/pages/Profile/Profile';
+import { ProtectedLayout } from './components/pages/ProtectedLayout/ProtectedLayout';
 
 function App() {
     return (

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import * as S from './index.styles';
 
-import { useAuth } from '../../../context/AuthProvider/useAuth';
+import { useAuth } from '../../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { ProfileInfoRequest } from '../../../context/AuthProvider/util';
+import { ProfileInfoRequest } from '../../../util';
 
 export const Profile = () => {
     const auth = useAuth();
@@ -26,7 +26,6 @@ export const Profile = () => {
 
             if (response) 
             {
-                console.log(response);
                 setProfileName(response.name);
                 setProfileLastName(response.last_name);
                 setProfileEmail(response.email);
@@ -69,7 +68,7 @@ export const Profile = () => {
                             <S.Profile_Picture>
                                 <span>Profile picture</span>
                                 <span>
-                                    <img src={`${profileAvatar}`} alt="Profile Picture"/>
+                                    <img src={`${profileAvatar}`} alt="User Profile"/>
                                 </span>
                             </S.Profile_Picture>
 

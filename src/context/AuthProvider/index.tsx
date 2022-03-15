@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
-import { IAuthProvider, IContext, IUser } from "./types";
-import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./util";
+import { IContext, IUser } from "../../types/types";
+import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "../../util";
 
 export const AuthContext = createContext<IContext>({} as IContext)
 
-export const AuthProvider = ({ children }: IAuthProvider) => {
+export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const [user, setUser] = useState<IUser | null>();
 
     useEffect(() => 
