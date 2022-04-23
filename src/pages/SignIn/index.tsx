@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import * as S from './index.styles';
+import * as S from './styles';
 
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 export const SignIn = () => {
     const auth = useAuth();

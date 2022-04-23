@@ -1,13 +1,11 @@
-import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import './App.css';
 
 import { AuthProvider } from './context/AuthProvider';
 
-import { SignIn } from './components/pages/SignIn/SignIn';
-import { Profile } from './components/pages/Profile/Profile';
-import { ProtectedLayout } from './components/pages/ProtectedLayout/ProtectedLayout';
+import { SignIn } from './pages/SignIn';
+import { Profile } from './pages/Profile';
+
+import { ProtectedLayout } from './components/ProtectedLayout';
 
 function App() {
     return (
@@ -15,7 +13,7 @@ function App() {
             <AuthProvider>
                 <BrowserRouter>
                     <Routes>
-                        <Route path='/signin' element={<SignIn />}/>
+                        <Route path='/' element={<SignIn />}/>
                         <Route path='/profile' element={
                             <ProtectedLayout>
                                 <Profile />

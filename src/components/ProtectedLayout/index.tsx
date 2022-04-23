@@ -1,15 +1,15 @@
 import React from "react";
 import { useNavigate  } from "react-router-dom";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
-import * as S from './index.styles';
+import * as S from './styles';
 
 export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
     const auth = useAuth();
     let navigate = useNavigate();
 
     const redirect = () => {
-        navigate('/signin');
+        navigate('/');
     }
 
     if (!auth.accessToken) 

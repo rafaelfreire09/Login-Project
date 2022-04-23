@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import * as S from './index.styles';
+import * as S from './styles';
 
-import { useAuth } from '../../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { ProfileInfoRequest } from '../../../util';
+import { ProfileInfoRequest } from '../../util';
 
 export const Profile = () => {
     const auth = useAuth();
@@ -45,7 +45,7 @@ export const Profile = () => {
     {
         auth.logout();
 
-        navigate('/signin');
+        navigate('/');
     }
 
     return (
